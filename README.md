@@ -1,6 +1,6 @@
 # zotero-mcp
 
-Read+write MCP server for Zotero. The first MCP server with **full write support** for managing your Zotero library from AI assistants.
+Read+write MCP server for Zotero. A MCP server with **full write support** for managing Zotero library from AI assistants.
 
 Existing Zotero MCP servers are read-only. This one lets you create items, manage collections, find and merge duplicates, and import BibTeX — all from within Claude Code, Claude Desktop, or any MCP-compatible client.
 
