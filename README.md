@@ -1,8 +1,8 @@
 # zotero-mcp
 
-Read+write MCP server for Zotero. A MCP server with **full write support** for managing Zotero library from AI assistants.
+Read+write MCP server for Zotero. An MCP server with **full write support** for managing Zotero library from AI assistants.
 
-Existing Zotero MCP servers are read-only. This one lets you create items, manage collections, find and merge duplicates, and import BibTeX — all from within Claude Code, Claude Desktop, or any MCP-compatible client.
+Zotero MCP servers I could find were read-only. This one lets you create items, manage collections, find and merge duplicates, and import BibTeX from within Claude Code, Claude Desktop, or any MCP-compatible client.
 
 ## Features
 
@@ -96,11 +96,11 @@ If local mode fails and Web API credentials are present, the server falls back t
 
 Once connected, you can ask your AI assistant things like:
 
-- "Search my Zotero for papers about narrative planning"
-- "Create a new collection called 'Preprint References'"
+- "Search my Zotero for papers ..."
+- "Create a new collection called ..."
 - "Import this BibTeX into my collection"
 - "Find duplicate items in my library and merge them"
-- "Add this paper to both the Preprint and AwesomeList collections"
+- "Add this paper to both collections"
 - "Look up DOI 10.1234/example and add it to my library"
 
 ## Development
