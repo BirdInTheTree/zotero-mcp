@@ -4,6 +4,8 @@ Read+write MCP server for Zotero. An MCP server with **full write support** for 
 
 Zotero MCP servers I could find were read-only. This one lets you create items, manage collections, find and merge duplicates, and import BibTeX from within Claude Code, Claude Desktop, or any MCP-compatible client.
 
+[![zotero-mcp MCP server](https://glama.ai/mcp/servers/BirdInTheTree/zotero-mcp/badges/card.svg)](https://glama.ai/mcp/servers/BirdInTheTree/zotero-mcp)
+
 ## Features
 
 ### Search & Read
