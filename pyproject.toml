@@ -1,0 +1,27 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "zotero-mcp-rw"
+version = "0.1.0"
+description = "Read+write MCP server for Zotero"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.11"
+dependencies = [
+    "fastmcp>=2.3.0",
+    "pyzotero>=1.5.0",
+]
+
+[project.scripts]
+zotero-mcp = "zotero_mcp.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/zotero_mcp"]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.24",
+]
