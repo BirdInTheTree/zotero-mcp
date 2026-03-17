@@ -4,3 +4,5 @@ __pycache__/
 dist/
 *.egg-info/
 .env
+.pytest_cache/
+docs/superpowers/
