@@ -342,7 +342,7 @@ class ZoteroClient:
                     existing_cols.add(col)
 
             # Trash the duplicate
-            self.zot.trash_items([dup])
+            self.zot.delete_item(dup)
 
         self.zot.update_item(keeper)
         return {
@@ -359,7 +359,7 @@ class ZoteroClient:
         if permanent:
             self.zot.delete_item(item)
         else:
-            self.zot.trash_items([item])
+            self.zot.delete_item(item)
         return {"key": item_key, "title": title, "permanent": permanent}
 
     # -- Helpers --

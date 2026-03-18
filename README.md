@@ -2,7 +2,9 @@
 
 Read+write MCP server for Zotero. An MCP server with **full write support** for managing Zotero library from AI assistants.
 
-Zotero MCP servers I could find were read-only. This one lets you create items, manage collections, find and merge duplicates, and import BibTeX from within Claude Code, Claude Desktop, or any MCP-compatible client.
+It lets you create items, manage collections, find and merge duplicates, and import BibTeX from within Claude Code/Desktop, or any MCP-compatible client.
+
+Uses the **Zotero Web API** (requires API key). Get the key at https://www.zotero.org/settings/keys.
 
 ## Features
 
@@ -34,8 +36,8 @@ Zotero MCP servers I could find were read-only. This one lets you create items, 
 ### Management
 | Tool | Description |
 |------|-------------|
-| `merge_duplicates` | Merge duplicates: transfer metadata, tags, collections to keeper, trash rest |
-| `delete_item` | Move to trash or permanently delete |
+| `merge_duplicates` | Merge duplicates: transfer metadata, tags, collections to keeper, delete rest |
+| `delete_item` | Delete an item |
 
 ## Installation
 
@@ -53,7 +55,10 @@ uv sync
 ### Claude Code
 
 ```bash
-claude mcp add zotero -- uv run --directory /path/to/zotero-mcp python -m zotero_mcp
+claude mcp add zotero \
+  -e ZOTERO_API_KEY=your-key \
+  -e ZOTERO_USER_ID=your-user-id \
+  -- uv run --directory /path/to/zotero-mcp python -m zotero_mcp
 ```
 
 ### Claude Desktop
@@ -67,7 +72,8 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
       "command": "uv",
       "args": ["run", "--directory", "/path/to/zotero-mcp", "python", "-m", "zotero_mcp"],
       "env": {
-        "ZOTERO_LOCAL": "true"
+        "ZOTERO_API_KEY": "your-key",
+        "ZOTERO_USER_ID": "your-user-id"
       }
     }
   }
@@ -76,21 +82,12 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
 
 ## Configuration
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `ZOTERO_LOCAL` | `true` | Use local Zotero desktop API (requires Zotero running) |
-| `ZOTERO_API_KEY` | — | Zotero Web API key (required if not using local) |
-| `ZOTERO_USER_ID` | — | Zotero user ID (required if not using local) |
+| Variable | Required | Description |
+|----------|----------|-------------|
+| `ZOTERO_API_KEY` | yes | Zotero Web API key |
+| `ZOTERO_USER_ID` | yes | Your Zotero user ID |
 
-### Local mode (default)
-
-Connects to Zotero desktop app at `http://localhost:23119/api`. Faster, no rate limits. Requires Zotero to be running with the default local API enabled.
-
-### Web API mode
-
-Set `ZOTERO_LOCAL=false` and provide `ZOTERO_API_KEY` and `ZOTERO_USER_ID`. Works without the desktop app. Get your API key at https://www.zotero.org/settings/keys.
-
-If local mode fails and Web API credentials are present, the server falls back to Web API automatically.
+Get your API key at https://www.zotero.org/settings/keys. Your user ID is shown on the same page.
 
 ## Examples
 

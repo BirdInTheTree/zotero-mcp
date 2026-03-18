@@ -28,22 +28,14 @@ def _get_client() -> ZoteroClient:
     if _client is not None:
         return _client
 
-    local = os.environ.get("ZOTERO_LOCAL", "true").lower() == "true"
     api_key = os.environ.get("ZOTERO_API_KEY", "")
     user_id = os.environ.get("ZOTERO_USER_ID", "")
 
-    if local:
-        try:
-            _client = ZoteroClient(local=True, user_id=user_id)
-            return _client
-        except Exception as e:
-            if api_key and user_id:
-                logger.warning(f"Local API failed ({e}), falling back to Web API")
-            else:
-                raise RuntimeError(
-                    f"Local Zotero API unavailable ({e}) and no Web API credentials set. "
-                    "Set ZOTERO_API_KEY and ZOTERO_USER_ID, or start Zotero desktop."
-                ) from e
+    if not api_key or not user_id:
+        raise RuntimeError(
+            "ZOTERO_API_KEY and ZOTERO_USER_ID are required. "
+            "Get your API key at https://www.zotero.org/settings/keys"
+        )
 
     _client = ZoteroClient(api_key=api_key, user_id=user_id, local=False)
     return _client
