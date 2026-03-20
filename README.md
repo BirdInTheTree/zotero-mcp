@@ -6,6 +6,8 @@ It lets you create items, manage collections, find and merge duplicates, and imp
 
 Uses the **Zotero Web API** (requires API key). Get the key at https://www.zotero.org/settings/keys.
 
+[![zotero-mcp MCP server](https://glama.ai/mcp/servers/BirdInTheTree/zotero-mcp/badges/card.svg)](https://glama.ai/mcp/servers/BirdInTheTree/zotero-mcp)
+
 ## Features
 
 ### Search & Read
